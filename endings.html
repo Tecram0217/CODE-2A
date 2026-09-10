@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>解放エンディング</title>
+  <link rel="icon" type="image/png" href="CODE2A.png.png">
+  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body class="gate-body">
+
+  <header class="gate-topbar">
+    <div class="gate-brand"><span class="gate-brand-mark" aria-hidden="true"></span><a href="index.html" style="color: inherit; text-decoration: none;">SPECTRA</a></div>
+    <div class="gate-classification">CODE:2A / <b>TOP SECRET</b></div>
+  </header>
+
+  <main class="gate-main">
+
+    <p class="gate-kicker">CASE FILE ARCHIVE / RECOVERED ENDINGS</p>
+    <h1>機密解除ファイル</h1>
+
+    <div class="gate-panel">
+
+      <div class="gate-panel-head">
+        <span>● ARCHIVE STATUS</span>
+        <span id="progress-text">RECOVERED: 0 / 4</span>
+      </div>
+
+      <div class="gate-panel-body">
+
+        <div class="grid">
+
+          <div class="box locked" id="ending1">
+            <span class="tab">FILE 01</span>
+            <span class="lockline"></span>
+            <span class="lockline"></span>
+            <span class="status">未開封</span>
+          </div>
+
+          <div class="box locked" id="ending2">
+            <span class="tab">FILE 02</span>
+            <span class="lockline"></span>
+            <span class="lockline"></span>
+            <span class="status">未開封</span>
+          </div>
+
+          <div class="box locked" id="ending3">
+            <span class="tab">FILE 03</span>
+            <span class="lockline"></span>
+            <span class="lockline"></span>
+            <span class="status">未開封</span>
+          </div>
+
+          <div class="box locked" id="ending4">
+            <span class="tab">FILE 04</span>
+            <span class="lockline"></span>
+            <span class="lockline"></span>
+            <span class="status">未開封</span>
+          </div>
+          
+        </div>
+
+        <div class="gate-actions">
+          <button id="back-home" type="button">
+            <span>ACCESS GATEへ戻る</span>
+            <span aria-hidden="true">→</span>
+          </button>
+          <button id="reset-progress" type="button">記録をリセット</button>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="gate-bottombar">
+    <span>CONFIDENTIAL / SPECTRA ARCHIVE</span>
+    <span>AUTHORIZED PERSONNEL ONLY</span>
+  </footer>
+
+  <div class="page-transition covered" id="page-transition" aria-hidden="false">
+    <span class="slab"></span>
+    <span class="stripe"></span>
+    <span class="transition-copy" id="transition-copy">CASE FILE ARCHIVE</span>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
