@@ -808,6 +808,7 @@
     .terminal-line.success { color:#c8d36b; }
     .terminal-line.dim { color:#765722; text-shadow:none; }
     .terminal-cursor { display:inline-block; width:9px; height:15px; margin-left:4px; vertical-align:-2px; background:#ffc557; box-shadow:0 0 8px rgba(255,190,76,.55); animation:terminalCursor 1s steps(2) infinite; }
+    .terminal-typing-cursor { display:inline-block; width:.48em; height:.48em; margin-left:.14em; vertical-align:-.08em; background:currentColor; box-shadow:0 0 8px currentColor; animation:terminalTypingCursor .82s steps(1,end) infinite; }
     .device-command { position:absolute; z-index:5; right:clamp(18px,2.5vw,34px); bottom:clamp(15px,2vw,24px); }
     .device-activate { height:42px; padding:0 19px; border:1px solid #9d6c25; background:#2e210d; color:#f7c45f; cursor:pointer; font:bold 10px "Courier New",monospace; letter-spacing:.1em; box-shadow:inset 0 0 0 2px #130e06; }
     .device-activate:hover,.device-activate:focus-visible { background:#4a3210; color:#ffe09b; }
@@ -875,6 +876,7 @@
     @keyframes cctvScan { from{top:-2px} to{top:100%} }
     @keyframes cctvDrift { from{transform:translateX(-4px)} to{transform:translateX(5px)} }
     @keyframes terminalCursor { 50%{opacity:0} }
+    @keyframes terminalTypingCursor { 0%,48%{opacity:1} 49%,100%{opacity:0} }
     @keyframes terminalSweep { from{transform:translateY(0)} to{transform:translateY(78vh)} }
     @keyframes bootLine { from{opacity:0;transform:translateY(3px)} to{opacity:1;transform:none} }
     @keyframes bootProgress { from{transform:scaleX(0)} to{transform:scaleX(1)} }
@@ -1187,17 +1189,17 @@
                     <section class="evidence-panel" aria-labelledby="camera-title">
                       <header class="evidence-panel-head"><span><b>● REC</b> EVIDENCE 01</span><span>CAMERA 02 / OFFICE</span></header>
                       <div class="evidence-panel-body">
-                        <h2 id="camera-title">監視カメラ映像</h2>
-                        <div class="cctv-frame cctv-media-port" id="cctv-media-port" data-video-src="assets/cctv-video.mp4" aria-label="監視カメラ映像の差し替えポート">
+                        <h2 id="camera-title">監視カメラ映像／難しい</h2>
+                        <div class="cctv-frame cctv-media-port" id="cctv-media-port" data-video-easy="assets/cctv-video-easy.mp4" data-video-hard="assets/cctv-video-hard.mp4" aria-label="監視カメラ映像の差し替えポート">
                           <video class="cctv-video" id="cctv-video" controls playsinline preload="metadata" aria-label="監視カメラ映像"></video>
                           <div class="cctv-fallback" id="cctv-fallback" role="img" aria-label="9月11日と表示された監視映像。バッグを持った女性が事務室へ入り、右側の壁には絵画Dとして夜のペンギンを描いた絵が展示されている。">
                             <div class="cctv-meta"><span><b>● REC</b>　CAM 02</span><span>09/11 FRI　21:43:18</span></div>
                             <div class="cctv-door"></div><div class="cctv-person"><span class="cctv-bag"></span></div>
                             <div class="cctv-artwork"><div class="penguin-scene"></div></div>
-                            <span class="cctv-port-badge">VIDEO PORT READY</span>
+                            <span class="cctv-port-badge" id="cctv-port-badge">HARD VIDEO / STANDBY</span>
                           </div>
                         </div>
-                        <p class="cctv-caption">VIDEO SOURCE / CHINEN SEIYA　・　VIDEO SLOT / STANDBY</p>
+                        <p class="cctv-caption" id="cctv-caption">VIDEO SOURCE / CHINEN SEIYA　・　CCTV-HARD-09-11</p>
                       </div>
                     </section>
 
@@ -2220,15 +2222,34 @@
 
       const cctvMediaPort = document.getElementById('cctv-media-port');
       const cctvVideo = document.getElementById('cctv-video');
+      const cctvTitle = document.getElementById('camera-title');
+      const cctvCaption = document.getElementById('cctv-caption');
+      const cctvPortBadge = document.getElementById('cctv-port-badge');
       if (cctvMediaPort && cctvVideo) {
-        const videoSource = cctvMediaPort.dataset.videoSrc;
+        const videoMode = easyMode ? 'EASY' : 'HARD';
+        const videoLabel = easyMode ? 'かんたん' : '難しい';
+        const videoName = `CCTV-${videoMode}-09-11`;
+        const videoSource = easyMode
+          ? cctvMediaPort.dataset.videoEasy
+          : cctvMediaPort.dataset.videoHard;
+
+        if (cctvTitle) cctvTitle.textContent = `監視カメラ映像／${videoLabel}`;
+        if (cctvCaption) cctvCaption.textContent = `VIDEO SOURCE / CHINEN SEIYA　・　${videoName}`;
+        if (cctvPortBadge) cctvPortBadge.textContent = `${videoMode} VIDEO / STANDBY`;
+        cctvVideo.setAttribute('aria-label', `監視カメラ映像（${videoLabel}）`);
+
         cctvVideo.addEventListener('loadedmetadata', () => {
           cctvMediaPort.classList.add('has-video');
+          if (cctvPortBadge) cctvPortBadge.textContent = `${videoMode} VIDEO / READY`;
         }, { once:true });
         cctvVideo.addEventListener('error', () => {
           cctvMediaPort.classList.remove('has-video');
+          if (cctvPortBadge) cctvPortBadge.textContent = `${videoMode} VIDEO / FILE MISSING`;
         });
-        if (videoSource) cctvVideo.src = videoSource;
+        if (videoSource) {
+          cctvVideo.src = videoSource;
+          cctvVideo.load();
+        }
       }
 
       const culpritForm = document.getElementById('culprit-form');
@@ -2333,17 +2354,35 @@
         terminalOutput.scrollTop = terminalOutput.scrollHeight;
       }
 
+      async function typeTerminalLine(text, type = '') {
+        const line = document.createElement('p');
+        const textNode = document.createTextNode('');
+        const cursor = document.createElement('span');
+        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        line.className = `terminal-line ${type}`.trim();
+        cursor.className = 'terminal-typing-cursor';
+        cursor.setAttribute('aria-hidden','true');
+        line.append(textNode,cursor);
+        terminalOutput.appendChild(line);
+        for (const character of Array.from(text)) {
+          textNode.data += character;
+          terminalOutput.scrollTop = terminalOutput.scrollHeight;
+          await new Promise(resolve => setTimeout(resolve,reducedMotion ? 0 : 52));
+        }
+        cursor.remove();
+      }
+
       function waitForDeviceLine(milliseconds) {
         const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         return new Promise(resolve => setTimeout(resolve,reducedMotion ? Math.min(milliseconds,90) : milliseconds));
       }
 
       async function runSimpleDeviceSequence() {
-        appendTerminalLine('消失装置、起動を確認。');
+        await typeTerminalLine('消失装置、起動を確認。');
         await waitForDeviceLine(900);
-        appendTerminalLine('ターゲットを認識シマシタ。');
+        await typeTerminalLine(`ターゲット「${selectedTargetName}」を認識シマシタ。`);
         await waitForDeviceLine(1000);
-        appendTerminalLine('コレヨリ、消失に入リマス。','warning');
+        await typeTerminalLine('コレヨリ、消失に入リマス。','warning');
         await waitForDeviceLine(1200);
         for (const number of ['3','2','1']) {
           appendTerminalLine(number,'count');
@@ -2352,9 +2391,9 @@
           }
           await waitForDeviceLine(850);
         }
-        appendTerminalLine('・・・','count');
+        await typeTerminalLine('・・・','count');
         await waitForDeviceLine(1450);
-        appendTerminalLine('完了シマシタ。','success');
+        await typeTerminalLine('完了シマシタ。','success');
         deviceScreen.classList.add('complete');
         deviceRunning = false;
         deviceContinue.disabled = false;
