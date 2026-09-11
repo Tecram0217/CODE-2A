@@ -1083,7 +1083,7 @@
                   <div><div class="chapter-index">③ / FIRST MISSION</div><h1 id="chapter-title-2">絵画の謎を解け</h1></div>
                   <div class="chapter-meta">PAINTING A—D<br>SWIPE LEFT / RIGHT</div>
                 </header>
-                <p class="intro-copy">左右のボタン、タブ、または横フリックで絵画を切り替えられます。A・B・Cの答えは、各問題のメモ欄に記録できます。</p>
+                <p class="intro-copy">左右のボタン、タブ、または横スライドで絵画を切り替えられます。A・B・Cの答えは、各問題のメモ欄に記録できます。</p>
 
                 <section class="puzzle-deck" aria-label="FIRST MISSION 絵画一覧">
                   <nav class="puzzle-deck-nav" aria-label="絵画を切り替える">
@@ -1113,9 +1113,9 @@
                         <div class="puzzle-slide-media"><figure class="puzzle-artwork"><figcaption>PAINTING B / 繁華街の鶏</figcaption><button class="zoom-trigger" type="button" data-image="assets/painting-b.jpg" data-title="絵画 B — 繁華街の鶏"><img src="assets/painting-b.jpg" alt="夜の繁華街に立つ鶏を描いた絵画"><span class="zoom-hint">＋ 拡大</span></button></figure></div>
                         <div class="puzzle-slide-body">
                           <div class="puzzle-code">PUZZLE B / 4 CHARACTERS</div><h2>問題 B</h2>
-                          <p class="problem-text">にわなはんかそにわう</p>
+                          <p class="problem-text" id="problem-b">にわなはんかそにわう</p>
                           <div class="answer-note"><label for="answer-b">解答メモ／4文字</label><input id="answer-b" data-answer-key="b" type="text" maxlength="4" autocomplete="off" placeholder="□□□□"></div>
-                          <div class="hint-stack"><button class="hint-reveal" type="button"><span>ヒントを1つ開く</span><span>＋</span></button><div class="hint-card" hidden><b>HINT 01</b>「にわなはんかそにわう」はこのままでは意味を成さない。絵画に映っている「にわとり」に注目しよう。</div><div class="hint-card" hidden><b>HINT 02</b>「にわとり」、すなわち「にわ」を文字列から取ると「なはんかそう」となる。答えは4文字なので、もう一度変更が必要だ。</div><div class="hint-card" hidden><b>HINT 03</b>ここは「はんかがい」。すなわち「はんか」が「い」になる。</div></div>
+                          <div class="hint-stack" id="hints-b"><button class="hint-reveal" type="button"><span>ヒントを1つ開く</span><span>＋</span></button><div class="hint-card" hidden><b>HINT 01</b>「にわなはんかそにわう」はこのままでは意味を成さない。絵画に映っている「にわとり」に注目しよう。</div><div class="hint-card" hidden><b>HINT 02</b>「にわとり」、すなわち「にわ」を文字列から取ると「なはんかそう」となる。答えは4文字なので、もう一度変更が必要だ。</div><div class="hint-card" hidden><b>HINT 03</b>ここは「はんかがい」。すなわち「はんか」が「い」になる。</div></div>
                         </div>
                       </article>
 
@@ -1123,7 +1123,7 @@
                         <div class="puzzle-slide-media"><figure class="puzzle-artwork"><figcaption>PAINTING C / あいうえお表</figcaption><button class="zoom-trigger" type="button" data-image="assets/painting-c.jpg" data-title="絵画 C — あいうえお表"><img src="assets/painting-c.jpg" alt="五十音表を示す授業風景の絵画"><span class="zoom-hint">＋ 拡大</span></button></figure></div>
                         <div class="puzzle-slide-body">
                           <div class="puzzle-code">PUZZLE C / 3 CHARACTERS</div><h2>問題 C</h2>
-                          <p class="problem-text">めうえ、あした、ました<br>繋げて読め</p>
+                          <p class="problem-text" id="problem-c">めうえ、あした、ました<br>繋げて読め</p>
                           <div class="answer-note"><label for="answer-c">解答メモ／3文字</label><input id="answer-c" data-answer-key="c" type="text" maxlength="3" autocomplete="off" placeholder="□□□"></div>
                           <div class="hint-stack"><button class="hint-reveal" type="button"><span>ヒントを1つ開く</span><span>＋</span></button><div class="hint-card" hidden><b>HINT 01</b>「めうえ」「あした」「ました」を「め上」「あ下」「ま下」と考え、絵画の50音表と対応させよう。</div><div class="hint-card" hidden><b>HINT 02</b>「め上」は、50音表で「め」の上にある「む」となる。ほかの2つのひらがなも同じように変換しよう。</div></div>
                         </div>
@@ -1291,7 +1291,7 @@
           <div class="device-input-row"><input id="device-target-name" name="device-target-name" type="text" maxlength="6" autocomplete="off" spellcheck="false" placeholder="名字または氏名" required><button class="device-activate" id="device-activate" type="submit">EXECUTE</button></div>
           <p class="device-input-feedback" id="device-input-feedback" aria-live="polite"></p>
         </form>
-        <div class="terminal-output" id="terminal-output" aria-live="polite"></div>
+        <div class="terminal-output" id="terminal-output" data-no-ruby aria-live="polite"></div>
         <button class="device-continue" id="device-continue" type="button" disabled>CONTINUE TO REPORT　[ENTER]</button>
       </section>
       <footer class="device-statusbar"><span>UNIT 19-2A　│　AUTHORIZED LOCAL SESSION</span><span>STATUS MONITOR　│　BUS 190V DC</span></footer>
@@ -1322,16 +1322,16 @@
       <div class="gallery-memory-viewport">
         <div class="gallery-memory-track" id="gallery-memory-track">
           <article class="gallery-memory-slide active" aria-hidden="false">
-            <div class="gallery-memory-art"><button class="gallery-memory-image" data-gallery-art data-image="assets/painting-a.jpg" data-title="絵画 A — 海浜幕張駅" type="button"><img src="assets/painting-a.jpg" alt="夜の海浜幕張駅ホームを描いた絵画"><span class="zoom-hint">＋ 拡大</span></button></div>
-            <div class="gallery-memory-info"><div class="gallery-memory-code"><span>PAINTING A</span><span>ARCHIVE 01 / 04</span></div><h3>海浜幕張駅</h3><p>夜の海浜幕張駅ホームを描いた作品。駅名標には、検見川浜・海浜幕張・幕張豊砂の3駅が並んでいる。</p><div class="gallery-memory-note">回想記録 / 駅名と、その前後の駅を確認できる。</div></div>
+            <div class="gallery-memory-art"><button class="gallery-memory-image" data-gallery-art data-image="assets/painting-a.jpg" data-title="絵画 A — 何気ない日常" type="button"><img src="assets/painting-a.jpg" alt="夜の海浜幕張駅ホームを描いた絵画"><span class="zoom-hint">＋ 拡大</span></button></div>
+            <div class="gallery-memory-info"><div class="gallery-memory-code"><span>PAINTING A</span><span>ARCHIVE 01 / 04</span></div><h3>何気ない日常</h3><p>夜の海浜幕張駅ホームを描いた作品。駅名標には、検見川浜・海浜幕張・幕張豊砂の3駅が並んでいる。</p><div class="gallery-memory-note">回想記録 / 駅名と、その前後の駅を確認できる。</div></div>
           </article>
           <article class="gallery-memory-slide" aria-hidden="true">
-            <div class="gallery-memory-art"><button class="gallery-memory-image" data-gallery-art data-image="assets/painting-b.jpg" data-title="絵画 B — 繁華街の鶏" type="button"><img src="assets/painting-b.jpg" alt="夜の繁華街に立つ鶏を描いた絵画"><span class="zoom-hint">＋ 拡大</span></button></div>
-            <div class="gallery-memory-info"><div class="gallery-memory-code"><span>PAINTING B</span><span>ARCHIVE 02 / 04</span></div><h3>繁華街の鶏</h3><p>雨上がりの繁華街。その中央に一羽の鶏が立つ、不思議な構図の作品。</p><div class="gallery-memory-note">回想記録 / 絵の中にあるものを、言葉として捉えてみる。</div></div>
+            <div class="gallery-memory-art"><button class="gallery-memory-image" data-gallery-art data-image="assets/painting-b.jpg" data-title="絵画 B — 繁華街" type="button"><img src="assets/painting-b.jpg" alt="夜の繁華街に立つ鶏を描いた絵画"><span class="zoom-hint">＋ 拡大</span></button></div>
+            <div class="gallery-memory-info"><div class="gallery-memory-code"><span>PAINTING B</span><span>ARCHIVE 02 / 04</span></div><h3>繁華街</h3><p>雨上がりの繁華街。その中央に一羽の鶏が立つ、不思議な構図の作品。</p><div class="gallery-memory-note">回想記録 / 絵の中にあるものを、言葉として捉えてみる。</div></div>
           </article>
           <article class="gallery-memory-slide" aria-hidden="true">
-            <div class="gallery-memory-art"><button class="gallery-memory-image" data-gallery-art data-image="assets/painting-c.jpg" data-title="絵画 C — あいうえお表" type="button"><img src="assets/painting-c.jpg" alt="五十音表を示す授業風景の絵画"><span class="zoom-hint">＋ 拡大</span></button></div>
-            <div class="gallery-memory-info"><div class="gallery-memory-code"><span>PAINTING C</span><span>ARCHIVE 03 / 04</span></div><h3>あいうえお表</h3><p>教室の大型画面に映された五十音表。各文字の上下左右の位置関係を確認できる。</p><div class="gallery-memory-note">回想記録 / 表は右から左へ「あ・か・さ・・・」の順に並ぶ。</div></div>
+            <div class="gallery-memory-art"><button class="gallery-memory-image" data-gallery-art data-image="assets/painting-c.jpg" data-title="絵画 C — はじめてのお勉強" type="button"><img src="assets/painting-c.jpg" alt="五十音表を示す授業風景の絵画"><span class="zoom-hint">＋ 拡大</span></button></div>
+            <div class="gallery-memory-info"><div class="gallery-memory-code"><span>PAINTING C</span><span>ARCHIVE 03 / 04</span></div><h3>はじめてのお勉強</h3><p>教室の大型画面に映された五十音表。各文字の上下左右の位置関係を確認できる。</p><div class="gallery-memory-note">回想記録 / 表は右から左へ「あ・か・さ・・・」の順に並ぶ。</div></div>
           </article>
           <article class="gallery-memory-slide" aria-hidden="true">
             <div class="gallery-memory-art"><button class="gallery-memory-image" data-gallery-art data-image="assets/painting-d.jpg" data-title="絵画 D — 天へ" type="button"><img src="assets/painting-d.jpg" alt="光へ続く石段を描いた期間限定絵画"><span class="zoom-hint">＋ 拡大</span></button></div>
@@ -1383,6 +1383,9 @@
         difficultyBadge.textContent = 'かんたん / EASY';
         difficultyBadge.setAttribute('aria-label','難易度 かんたん');
         document.title = 'CODE:2A — かんたんモード';
+        document.getElementById('problem-b').innerHTML = '絵にいる動物を使って4文字消せ<br>【にわないそにわう】';
+        document.getElementById('hints-b').innerHTML = '<button class="hint-reveal" type="button"><span>ヒントを1つ開く</span><span>＋</span></button><div class="hint-card" hidden><b>HINT 01</b>絵にいる動物はニワトリです。</div><div class="hint-card" hidden><b>HINT 02</b>すなわち【にわ】【とり】。よって文章から【にわ】を取ればよい。</div>';
+        document.getElementById('problem-c').innerHTML = '【てした】が【と】になるとき、<br>めうえ、あした、ました<br>つなげて読め';
       }
 
       const easyRubyReadings = new Map([
@@ -1458,8 +1461,8 @@
       const labels = ['マップを確認する', 'FIRST MISSIONへ進む', '事務室へ進む', '裏切り者捜索へ進む', '捜査フェーズ'];
       const briefingDialogueLines = [
         'やあ！知念だ。どうやら大変なことになっちまったようだが、一緒に頑張ろう！',
-        'まずは絵画展示エリアへ向かい、絵画の問題を調べてくれ。',
-        '絵画A〜Dをよく調べてみてくれ。困った時は各問題のヒントを使える。'
+        'まずは絵画展示エリアへ向かってくれ。',
+        '絵画をよく調べてみてくれ。困った時は各問題のヒントを使える。'
       ];
       const officeDialogueLines = [
         '認証を完了したようだな。',
@@ -1468,7 +1471,7 @@
           '・・・ん？　映像の右側にあるのは、絵画Dか？　いや、待て。これは・・・。',
           '・・・いや、何でもない。少し見覚えがあって焦っただけだ。気にせず捜査を続けてくれ。'
         ] : []),
-        'それと、画面右上に「絵画回想」タブを追加しておいた。今いる場所を離れずに、A〜Dの展示と展示予定をいつでも見直せる。必要なら使ってくれ。',
+        'それと、画面右上に「絵画回想」タブを追加しておいた。今いる場所を離れずに、絵画の展示と展示予定をいつでも見直せる。必要なら使ってくれ。',
         'それでは、取り調べ資料と映像を照らし合わせて、裏切り者を特定してくれ。頼んだぞ。'
       ];
       const targetDialogueLines = [
@@ -1480,9 +1483,9 @@
       const firstMissionBriefing = {
         label: 'FIRST MISSION',
         title: '絵画展示エリアを調査する',
-        summary: '絵画A〜Dを調査し、展示されている問題を解いてください。',
+        summary: '絵画を調査し、展示されている問題を解いてください。',
         rules: [
-          '横フリックで絵画A〜Dを切り替える。',
+          '横スライドで絵画を切り替える。',
           '絵画A〜Cの答えは、それぞれのメモ欄へ記録する。',
           '困った時は、各問題のヒントを任意のタイミングで確認できる。'
         ],
