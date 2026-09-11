@@ -119,14 +119,14 @@
     .intro-copy { max-width: 690px; margin: -14px 0 30px; color: #898d87; font-size: 12px; line-height: 1.9; }
 
     .document-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; align-items: start; }
-    .document-card, .map-card, .mission-visual {
+    .document-card, .mission-visual {
       position: relative;
       margin: 0;
       border: 1px solid var(--line);
       background: #0a0b0b;
       overflow: hidden;
     }
-    .document-card figcaption, .map-card figcaption, .mission-visual figcaption { display: flex; justify-content: space-between; padding: 12px 14px; border-bottom: 1px solid var(--line); color: #777b75; font: 8px Consolas, monospace; letter-spacing: .12em; }
+    .document-card figcaption, .mission-visual figcaption { display: flex; justify-content: space-between; padding: 12px 14px; border-bottom: 1px solid var(--line); color: #777b75; font: 8px Consolas, monospace; letter-spacing: .12em; }
     .zoom-trigger { position: relative; width: 100%; display: block; padding: 0; border: 0; background: #080909; cursor: zoom-in; overflow: hidden; }
     .zoom-trigger img { width: 100%; display: block; object-fit: contain; transition: transform .5s ease, opacity .3s ease; }
     .document-card .zoom-trigger img { height: min(57vh, 700px); }
@@ -158,16 +158,6 @@
     .solo-guide .dossier-body { display:grid; gap:14px; }
     .solo-guide .dossier-title { margin-bottom:2px; }
     .solo-guide .flow-step { grid-template-columns:42px minmax(0,1fr); }
-    .map-layout { display: grid; grid-template-columns: minmax(0, 1fr) 270px; gap: 25px; align-items: start; }
-    .map-card .zoom-trigger img { max-height: 63vh; }
-    .intel-note { border-top: 2px solid var(--red); padding: 22px; background: var(--panel-2); }
-    .intel-note .label { color: var(--red-bright); font: 9px Consolas, monospace; letter-spacing: .15em; }
-    .intel-note h2 { margin: 18px 0 12px; font-size: 18px; }
-    .intel-note p { margin: 0; color: #92958f; font-size: 12px; line-height: 1.9; }
-    .route-list { margin: 25px 0 0; padding: 0; list-style: none; }
-    .route-list li { display: flex; gap: 12px; padding: 12px 0; border-top: 1px solid var(--line); color: #b0b3ad; font-size: 11px; }
-    .route-list b { color: var(--red-bright); font: 10px Consolas, monospace; }
-
     .chimen-block { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: clamp(24px, 5vw, 66px); align-items: start; }
     .partner-card { position: sticky; top: 0; }
     .partner-portrait { position: relative; height: 214px; overflow: hidden; border: 1px solid var(--line); background: linear-gradient(145deg, #202322, #0c0e0e 60%); }
@@ -367,33 +357,6 @@
     .mission-confirm:disabled { opacity:.5; cursor:wait; }
     .difficulty-badge { height: 38px; display: flex; align-items: center; gap: 8px; padding: 0 13px; border: 1px solid rgba(237,58,49,.38); color: var(--red-bright); font: 9px Consolas,monospace; letter-spacing: .12em; }
     .difficulty-badge::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--red-bright); }
-
-    .map-card.fullscreen { position:fixed; z-index:130; inset:12px; display:grid; grid-template-rows:auto minmax(0,1fr); overflow:auto; background:#070808; box-shadow:0 0 0 100vmax rgba(0,0,0,.88); }
-    .map-card.fullscreen .map-blueprint { width:min(100%,calc((100vh - 90px) * 16 / 9)); height:auto; min-height:0; max-height:none; margin:auto; aspect-ratio:16/9; transform:scale(var(--map-zoom,1)); transform-origin:center; transition:transform .2s ease; }
-    .map-card.fullscreen .map-expand { position:fixed; z-index:132; top:26px; right:26px; bottom:auto; border-color:var(--red); background:var(--red); color:#fff; box-shadow:0 8px 30px rgba(0,0,0,.55); }
-    .map-zoom-tools { display:none; }
-    .map-card.fullscreen .map-zoom-tools { position:fixed; z-index:132; left:50%; bottom:26px; transform:translateX(-50%); display:flex; align-items:center; gap:8px; padding:8px; border:1px solid var(--line); background:rgba(7,8,8,.94); box-shadow:0 8px 30px rgba(0,0,0,.55); }
-    .map-card.fullscreen.can-pan .map-blueprint { cursor:grab; touch-action:none; }
-    .map-card.fullscreen.can-pan.panning .map-blueprint { cursor:grabbing; transition:none; }
-    body.map-fullscreen { overflow:hidden; }
-    .map-blueprint { position: relative; width: 100%; aspect-ratio: 16/9; min-height: 390px; overflow: hidden; background: radial-gradient(circle at 60% 40%,rgba(255,255,255,.045),transparent 44%),#080a09; }
-    .map-blueprint::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(0deg,transparent 0 3px,rgba(255,255,255,.018) 4px); }
-    .floor-outline { position: absolute; left: 24.5%; top: 19.5%; width: 36.7%; height: 67%; border: 2px solid #d8dad4; }
-    .office-room { position: absolute; left: 34%; top: 32%; width: 22.5%; height: 30%; border: 6px solid #d8dad4; border-bottom: 0; }
-    .map-divider { position:absolute; z-index:1; left:43%; top:61.5%; height:25%; border-left:6px solid #d8dad4; }
-    .map-label { position: absolute; z-index: 2; color:#d8dad4; font-size: clamp(11px,1.25vw,17px); letter-spacing:.08em; }
-    .map-label.exhibition { left: 14.5%; top: 31%; writing-mode: vertical-rl; letter-spacing:.22em; }
-    .map-label.office { left: 40%; top: 43%; font-size: clamp(18px,2.4vw,34px); }
-    .map-label.entrance { left: 62.5%; top: 24%; }
-    .map-label.exit { left: 62.5%; top: 72%; }
-    .map-label.spy { left: 57.4%; top: 33%; writing-mode: vertical-rl; color:#8c908a; font-size:11px; }
-    .map-device { position:absolute; z-index:2; left:43.2%; bottom:13.5%; padding:6px 10px; border:1px solid #d8dad4; color:#d8dad4; background:#080a09; font-size:11px; }
-    .map-point { position:absolute; z-index:3; width:31px; height:31px; display:grid; place-items:center; border:1px solid var(--red-bright); border-radius:50%; background:#080a09; color:white; font:12px Consolas,monospace; box-shadow:0 0 0 5px rgba(189,41,41,.13); }
-    .map-point.a { left:23.2%; top:67%; }.map-point.b { left:28.4%; top:81%; }.map-point.c { left:35.3%; top:81%; }.map-point.d { left:41.5%; top:67%; }
-    .map-route { position:absolute; z-index:1; height:1px; border-top:1px dashed rgba(232,231,225,.45); transform-origin:left center; }
-    .map-route.r1 { left:43%; top:72%; width:17%; transform:rotate(-29deg); }.map-route.r2 { left:35%; top:47%; width:16%; transform:rotate(43deg); }.map-route.r3 { left:24.5%; top:27.5%; width:12%; transform:rotate(15deg); }
-    .map-expand { position:absolute; z-index:5; right:13px; bottom:13px; height:36px; padding:0 13px; border:1px solid var(--line); background:rgba(7,8,8,.88); color:white; cursor:pointer; font:8px Consolas,monospace; letter-spacing:.12em; }
-    .source-reference { width:100%; min-height:42px; display:flex; align-items:center; justify-content:space-between; margin-top:12px; padding:0 13px; border:1px solid var(--line); background:transparent; color:#858983; cursor:pointer; font-size:10px; }
 
     .painting-experience { border:1px solid var(--line); background:#0a0c0b; }
     .painting-toolbar { min-height:58px; display:grid; grid-template-columns:52px 1fr 52px; align-items:center; border-bottom:1px solid var(--line); }
@@ -919,7 +882,7 @@
       .gallery-memory-info > p { font-size:14px; }
       .gallery-memory-schedule .schedule-row { grid-template-columns:104px minmax(0,1fr); }
       .gallery-exit { margin:0 12px 12px; }
-      .document-grid, .map-layout, .evidence-layout, .final-layout { grid-template-columns: 1fr; }
+      .document-grid, .evidence-layout, .final-layout { grid-template-columns: 1fr; }
       .investigation-layout, .investigation-decision { grid-template-columns:minmax(0,1fr); }
       .briefing-grid { grid-template-columns:1fr; }
       .painting-slide { grid-template-columns:1fr; }
@@ -928,12 +891,11 @@
       .partner-portrait { height: 160px; }
       .partner-portrait::before { width: 61px; height: 70px; left: 28px; top: 24px; }
       .partner-portrait::after { width: 92px; left: 13px; }
-      .chapter-index,.intel-note .label,.speaker-label,.puzzle-code,.hint-card b,.password-clue strong,.novel-status,.culprit-entry label { font-size:11px; }
-      .intro-copy,.story-copy p,.intel-note p,.problem-text,.hint-card,.password-clue p,.office-gate-body > p,.evidence-lead,.transcript-body p,.investigation-hints > p,.culprit-box > p,.gallery-intro { color:#b2b5af; font-size:14px; }
-      .document-card figcaption,.map-card figcaption,.mission-visual figcaption,.dossier-head,.artwork-frame figcaption,.office-gate-head,.evidence-panel-head { color:#9da19b; font-size:10px; }
+      .chapter-index,.speaker-label,.puzzle-code,.hint-card b,.password-clue strong,.novel-status,.culprit-entry label { font-size:11px; }
+      .intro-copy,.story-copy p,.problem-text,.hint-card,.password-clue p,.office-gate-body > p,.evidence-lead,.transcript-body p,.investigation-hints > p,.culprit-box > p,.gallery-intro { color:#b2b5af; font-size:14px; }
+      .document-card figcaption,.mission-visual figcaption,.dossier-head,.artwork-frame figcaption,.office-gate-head,.evidence-panel-head { color:#9da19b; font-size:10px; }
       .suspect b { font-size:13px; }.suspect span { color:#959992; font-size:10px; }
       .flow-note { color:#b5b8b2; font-size:13px; }.flow-step h3 { font-size:15px; }.flow-step p { color:#aeb1ab; font-size:13px; }.flow-time { color:#a0a49d; font-size:11px; }
-      .route-list li { font-size:13px; }.route-list b { font-size:11px; }
       .partner-id,.partner-status,.mission-placeholder .placeholder-title,.camera-ui,.fate,.nav-current,.lightbox-title,.zoom-readout { color:#a1a59e; font-size:10px; }
       .speech p { font-size:15px; line-height:2; }
       .painting-dot { width:40px; height:36px; font-size:12px; }
@@ -976,18 +938,17 @@
       .placeholder-grid { gap: 6px; }
       .placeholder-art { font-size: 19px; }
       .camera, .camera canvas { min-height: 260px; }
-      .map-blueprint { min-height:310px; }
       .novel-scene { padding:14px; }
       .novel-character { left:2%; width:250px; height:76%; opacity:.6; }
       .novel-signal { display:none; }
       .novel-dialogue-inner { min-height:205px; grid-template-columns:1fr auto; padding:20px; }
       .novel-text { font-size:13px; line-height:1.85; }
       .cctv-frame { min-height:300px; }
-      .chapter[data-chapter="4"] .evidence-panel-body { padding:16px 14px; }
-      .chapter[data-chapter="4"] .evidence-panel-head,
-      .chapter[data-chapter="4"] .transcript-name { flex-wrap:wrap; row-gap:7px; }
-      .chapter[data-chapter="4"] .evidence-panel-head > span,
-      .chapter[data-chapter="4"] .transcript-name > * { min-width:0; max-width:100%; overflow-wrap:anywhere; }
+      .chapter[data-chapter="3"] .evidence-panel-body { padding:16px 14px; }
+      .chapter[data-chapter="3"] .evidence-panel-head,
+      .chapter[data-chapter="3"] .transcript-name { flex-wrap:wrap; row-gap:7px; }
+      .chapter[data-chapter="3"] .evidence-panel-head > span,
+      .chapter[data-chapter="3"] .transcript-name > * { min-width:0; max-width:100%; overflow-wrap:anywhere; }
       .device-titlebar span:nth-child(2),.device-statusbar span:nth-child(2) { display:none; }
       .novel-choices { grid-template-columns:1fr; }
       .novel-back,.novel-advance { min-width:120px; }
@@ -1050,37 +1011,7 @@
             <section class="chapter" data-chapter="1" aria-labelledby="chapter-title-1" aria-hidden="true">
               <div class="chapter-inner">
                 <header class="chapter-head">
-                  <div><div class="chapter-index">② / AREA MAP</div><h1 id="chapter-title-1">館内マップ</h1></div>
-                  <div class="chapter-meta">CURRENT AREA<br>ENTRANCE</div>
-                </header>
-                <div class="map-layout">
-                  <figure class="map-card">
-                    <figcaption><span>槐美術館 / 更新マップ</span><span>FLOOR 01</span></figcaption>
-                    <div class="map-blueprint" aria-label="絵画展示エリア、事務室、絵画Dを通る仕切り、消失装置の位置を示す館内マップ">
-                      <span class="floor-outline"></span><span class="office-room"></span><span class="map-divider"></span>
-                      <span class="map-label exhibition">絵画展示エリア</span><span class="map-label office">事務室</span><span class="map-label entrance">入口</span><span class="map-label exit">出口</span><span class="map-label spy">スパイの控え室</span>
-                      <span class="map-device">消失装置</span>
-                      <span class="map-point a">A</span><span class="map-point b">B</span><span class="map-point c">C</span><span class="map-point d">D</span>
-                      <span class="map-route r1"></span><span class="map-route r2"></span><span class="map-route r3"></span>
-                    </div>
-                    <button class="map-expand" id="map-expand" type="button" aria-expanded="false">全画面表示</button>
-                    <div class="map-zoom-tools" aria-label="マップの拡大縮小"><button class="tool-button" id="map-zoom-out" type="button" aria-label="マップを縮小">−</button><span class="zoom-readout" id="map-zoom-readout">100%</span><button class="tool-button" id="map-zoom-in" type="button" aria-label="マップを拡大">＋</button><button class="tool-button" id="map-zoom-reset" type="button">RESET</button></div>
-                  </figure>
-                  <aside class="intel-note">
-                    <div class="label">ROUTE INTEL</div>
-                    <h2>侵入経路</h2>
-                    <p>入口は右上、出口は右下です。絵画展示エリア、事務室、消失装置の位置を確認してください。</p>
-                    <ol class="route-list"><li><b>01</b> 入口</li><li><b>02</b> 絵画展示エリア</li><li><b>03</b> 事務室</li><li><b>04</b> 消失装置・出口</li></ol>
-                    <button class="source-reference" type="button" data-image="assets/museum-map-reference.png" data-title="槐美術館 館内マップ原図"><span>提供資料の原図を確認</span><span>＋</span></button>
-                  </aside>
-                </div>
-              </div>
-            </section>
-
-            <section class="chapter" data-chapter="2" aria-labelledby="chapter-title-2" aria-hidden="true">
-              <div class="chapter-inner">
-                <header class="chapter-head">
-                  <div><div class="chapter-index">③ / FIRST MISSION</div><h1 id="chapter-title-2">絵画の謎を解け</h1></div>
+                  <div><div class="chapter-index">② / FIRST MISSION</div><h1 id="chapter-title-1">絵画の謎を解け</h1></div>
                   <div class="chapter-meta">PAINTING A—D<br>SWIPE LEFT / RIGHT</div>
                 </header>
                 <p class="intro-copy">左右のボタン、タブ、または横スライドで絵画を切り替えられます。A・B・Cの答えは、各問題のメモ欄に記録できます。</p>
@@ -1144,10 +1075,10 @@
               </div>
             </section>
 
-            <section class="chapter" data-chapter="3" aria-labelledby="chapter-title-3" aria-hidden="true">
+            <section class="chapter" data-chapter="2" aria-labelledby="chapter-title-2" aria-hidden="true">
               <div class="chapter-inner">
                 <header class="chapter-head">
-                  <div><div class="chapter-index">④ / OFFICE</div><h1 id="chapter-title-3">事務室へ向かえ</h1></div>
+                  <div><div class="chapter-index">③ / OFFICE</div><h1 id="chapter-title-2">事務室へ向かえ</h1></div>
                   <div class="chapter-meta">PASSWORD VERIFIED<br>OFFICE ACCESS</div>
                 </header>
                 <section class="office-gate" aria-labelledby="office-gate-title">
@@ -1178,10 +1109,10 @@
               </div>
             </section>
 
-            <section class="chapter" data-chapter="4" aria-labelledby="chapter-title-4" aria-hidden="true">
+            <section class="chapter" data-chapter="3" aria-labelledby="chapter-title-3" aria-hidden="true">
               <div class="chapter-inner">
                 <header class="chapter-head">
-                  <div><div class="chapter-index">⑤ / TRAITOR INVESTIGATION</div><h1 id="chapter-title-4">裏切り者を特定せよ</h1></div>
+                  <div><div class="chapter-index">④ / TRAITOR INVESTIGATION</div><h1 id="chapter-title-3">裏切り者を特定せよ</h1></div>
                   <div class="chapter-meta">EVIDENCE 01—02<br>SEPTEMBER 11</div>
                 </header>
                 <div class="investigation-body" id="investigation-body">
@@ -1255,7 +1186,7 @@
 
         <footer class="bottom-nav">
           <button class="back-button" id="back-button" type="button" disabled><b aria-hidden="true">←</b><span>ひとつ前へ戻る</span></button>
-          <div class="nav-current"><b id="nav-current">01</b> / 05</div>
+          <div class="nav-current"><b id="nav-current">01</b> / 04</div>
           <button class="next-button" id="next-button" type="button"><span id="next-label">マップを確認する</span><b aria-hidden="true">→</b></button>
         </footer>
       </div>
@@ -1458,7 +1389,7 @@
       const missionRules = document.getElementById('mission-rules');
       const missionConfirm = document.getElementById('mission-confirm');
       const missionConfirmLabel = document.getElementById('mission-confirm-label');
-      const labels = ['マップを確認する', 'FIRST MISSIONへ進む', '事務室へ進む', '裏切り者捜索へ進む', '捜査フェーズ'];
+      const labels = ['FIRST MISSIONへ進む', '事務室へ進む', '裏切り者捜索へ進む', '捜査フェーズ'];
       const briefingDialogueLines = [
         'やあ！知念だ。どうやら大変なことになっちまったようだが、一緒に頑張ろう！',
         'まずは絵画展示エリアへ向かってくれ。',
@@ -1601,14 +1532,14 @@
 
       function goTo(index, unlock = false, animate = true) {
         if (index < 0 || index >= chapters.length) return;
-        if (index === 4 && !officeCleared) return;
+        if (index === 3 && !officeCleared) return;
         if (unlock) maxUnlocked = Math.max(maxUnlocked, index);
         if (index > maxUnlocked) return;
-        if (index === 2 && current < 2 && !novelSeen) {
+        if (index === 1 && current < 1 && !novelSeen) {
           novelSeen = true;
           playDialogueTransition(() => {
             openNovelPart(briefingDialogueLines, () => {
-              goTo(2, true, false);
+              goTo(1, true, false);
             }, false, firstMissionBriefing);
           });
           return;
@@ -1627,9 +1558,9 @@
             if (active) chapter.scrollTop = 0;
           });
           backButton.disabled = index === 0;
-          nextButton.disabled = index === chapters.length - 1 || (index === 3 && !officeCleared);
+          nextButton.disabled = index === chapters.length - 1 || (index === 2 && !officeCleared);
           nextLabel.textContent = labels[index];
-          if (index >= 2) startTimer();
+          if (index >= 1) startTimer();
           if (instant) requestAnimationFrame(() => { track.style.transition = ''; });
         };
         if (index !== current && animate) {
@@ -1641,10 +1572,10 @@
 
       backButton.addEventListener('click', () => goTo(current - 1));
       nextButton.addEventListener('click', () => goTo(current + 1, true));
-      document.getElementById('office-jump').addEventListener('click', () => goTo(3, true));
+      document.getElementById('office-jump').addEventListener('click', () => goTo(2, true));
 
       // Bind document previews before the later investigation setup so the
-      // briefing sheets and map reference are available from the first screen.
+      // briefing sheet is available from the first screen.
       const lightbox = document.getElementById('lightbox');
       const lightboxImage = document.getElementById('lightbox-image');
       const lightboxTitle = document.getElementById('lightbox-title');
@@ -1696,7 +1627,7 @@
         lightbox.setAttribute('aria-hidden', 'true');
         if (lastZoomTrigger) lastZoomTrigger.focus();
       }
-      document.querySelectorAll('.zoom-trigger, .source-reference').forEach(trigger => trigger.addEventListener('click', () => openLightbox(trigger)));
+      document.querySelectorAll('.zoom-trigger').forEach(trigger => trigger.addEventListener('click', () => openLightbox(trigger)));
       lightboxClose.addEventListener('click', closeLightbox);
       document.getElementById('zoom-in').addEventListener('click', () => setZoom(zoom + .25));
       document.getElementById('zoom-out').addEventListener('click', () => setZoom(zoom - .25));
@@ -1930,78 +1861,6 @@
         }
       }));
 
-      const mapCard = document.querySelector('.map-card');
-      const mapBlueprint = document.querySelector('.map-blueprint');
-      const mapExpand = document.getElementById('map-expand');
-      const mapZoomReadout = document.getElementById('map-zoom-readout');
-      let mapZoom = 1;
-      let mapPanX = 0;
-      let mapPanY = 0;
-      let mapPanStartX = 0;
-      let mapPanStartY = 0;
-      let mapPanOriginX = 0;
-      let mapPanOriginY = 0;
-      let mapPanPointer = null;
-      function applyMapTransform() {
-        mapBlueprint.style.transform = `translate3d(${mapPanX}px,${mapPanY}px,0) scale(${mapZoom})`;
-      }
-      function setMapZoom(value) {
-        mapZoom = Math.min(4, Math.max(.5, value));
-        if (mapZoom <= 1) {
-          mapPanX = 0;
-          mapPanY = 0;
-        }
-        mapCard.classList.toggle('can-pan', mapZoom > 1 && mapCard.classList.contains('fullscreen'));
-        applyMapTransform();
-        mapZoomReadout.textContent = `${Math.round(mapZoom * 100)}%`;
-      }
-      function setMapFullscreen(expanded) {
-        mapCard.classList.toggle('fullscreen', expanded);
-        document.body.classList.toggle('map-fullscreen', expanded);
-        mapExpand.textContent = expanded ? '全画面を閉じる' : '全画面表示';
-        mapExpand.setAttribute('aria-expanded', String(expanded));
-        if (!expanded) setMapZoom(1);
-        else mapCard.classList.toggle('can-pan', mapZoom > 1);
-      }
-      mapExpand.addEventListener('click', () => {
-        setMapFullscreen(!mapCard.classList.contains('fullscreen'));
-      });
-      document.getElementById('map-zoom-in').addEventListener('click', () => setMapZoom(mapZoom + .25));
-      document.getElementById('map-zoom-out').addEventListener('click', () => setMapZoom(mapZoom - .25));
-      document.getElementById('map-zoom-reset').addEventListener('click', () => setMapZoom(1));
-      mapCard.addEventListener('wheel', event => {
-        if (!mapCard.classList.contains('fullscreen')) return;
-        event.preventDefault();
-        setMapZoom(mapZoom + (event.deltaY < 0 ? .15 : -.15));
-      }, { passive:false });
-      mapCard.addEventListener('pointerdown', event => {
-        if (!mapCard.classList.contains('fullscreen') || mapZoom <= 1 || event.target.closest('button') || (event.pointerType === 'mouse' && event.button !== 0)) return;
-        event.preventDefault();
-        mapPanPointer = event.pointerId;
-        mapPanStartX = event.clientX;
-        mapPanStartY = event.clientY;
-        mapPanOriginX = mapPanX;
-        mapPanOriginY = mapPanY;
-        mapCard.classList.add('panning');
-        mapCard.setPointerCapture(event.pointerId);
-      });
-      mapCard.addEventListener('pointermove', event => {
-        if (mapPanPointer !== event.pointerId) return;
-        const maxX = Math.max(0, mapBlueprint.clientWidth * (mapZoom - 1) / 2);
-        const maxY = Math.max(0, mapBlueprint.clientHeight * (mapZoom - 1) / 2);
-        mapPanX = Math.max(-maxX, Math.min(maxX, mapPanOriginX + event.clientX - mapPanStartX));
-        mapPanY = Math.max(-maxY, Math.min(maxY, mapPanOriginY + event.clientY - mapPanStartY));
-        applyMapTransform();
-      });
-      function endMapPan(event) {
-        if (mapPanPointer !== event.pointerId) return;
-        mapPanPointer = null;
-        mapCard.classList.remove('panning');
-        if (mapCard.hasPointerCapture(event.pointerId)) mapCard.releasePointerCapture(event.pointerId);
-      }
-      mapCard.addEventListener('pointerup', endMapPan);
-      mapCard.addEventListener('pointercancel', endMapPan);
-
       const timer = document.getElementById('timer');
       const timerValue = document.getElementById('timer-value');
       const failure = document.getElementById('failure');
@@ -2218,7 +2077,7 @@
         playDialogueTransition(() => {
           openNovelPart(officeDialogueLines, () => {
             unlockGallery();
-            goTo(4, true, false);
+            goTo(3, true, false);
           }, false, secondMissionBriefing);
         });
       });
@@ -2577,11 +2436,6 @@
         openLightbox(trigger);
       }));
       document.addEventListener('keydown', event => {
-        if (event.key === 'Escape' && mapCard.classList.contains('fullscreen')) {
-          setMapFullscreen(false);
-          mapExpand.focus();
-          return;
-        }
         if (sceneTransition.classList.contains('mission-hold') || sceneTransition.classList.contains('mission-reveal')) return;
         if (epilogueActive || epilogueScreen.classList.contains('open')) {
           if (epilogueActive && !event.repeat && (event.key === 'Enter' || event.key === ' ')) {
