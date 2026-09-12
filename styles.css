@@ -1110,6 +1110,16 @@ button:hover {
     animation: flicker 0.15s infinite alternate;
 }
 
+.record-divider {
+    display: block;
+    width: 100%;
+    height: 1px;
+    margin: clamp(20px, 3vw, 34px) 0;
+    background: currentColor;
+    box-shadow: 0 0 7px currentColor;
+    opacity: 0.42;
+}
+
 /* Subtle CRT flicker */
 @keyframes flicker {
     from {

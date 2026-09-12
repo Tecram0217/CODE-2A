@@ -984,7 +984,7 @@
       <div class="brand"><span class="brand-mark" aria-hidden="true"></span><a href="index.html" style="color: inherit; text-decoration: none;">SPECTRA</a></div>
       <div class="classification">CODE:2A / <b>TOP SECRET</b></div>
       <div class="timer" id="timer" aria-live="polite"><span class="timer-label">TIME REMAINING</span><span class="timer-value" id="timer-value">10:00</span></div>
-      <div class="top-actions"><span class="difficulty-badge" aria-label="難易度 難しい">難しい / HARD</span></div>
+      <div class="top-actions"><span class="difficulty-badge" aria-label="難易度 ふつう">ふつう / NORMAL</span></div>
     </header>
     <button class="gallery-button" id="gallery-button" type="button" disabled aria-controls="gallery-drawer" aria-expanded="false">絵画回想</button>
 
@@ -1120,7 +1120,7 @@
                     <section class="evidence-panel" aria-labelledby="camera-title">
                       <header class="evidence-panel-head"><span><b>● REC</b> EVIDENCE 01</span><span>CAMERA 02 / OFFICE</span></header>
                       <div class="evidence-panel-body">
-                        <h2 id="camera-title">監視カメラ映像／難しい</h2>
+                        <h2 id="camera-title">監視カメラ映像／ふつう</h2>
                         <div class="cctv-frame cctv-media-port" id="cctv-media-port" data-video-easy="assets/cctv-video-easy.mp4" data-video-hard="assets/cctv-video-hard.mp4" aria-label="監視カメラ映像の差し替えポート">
                           <video class="cctv-video" id="cctv-video" controls playsinline preload="metadata" aria-label="監視カメラ映像"></video>
                           <div class="cctv-fallback" id="cctv-fallback" role="img" aria-label="9月11日と表示された監視映像。バッグを持った女性が事務室へ入り、右側の壁には絵画Dとして夜のペンギンを描いた絵が展示されている。">
@@ -2089,7 +2089,7 @@
       const cctvPortBadge = document.getElementById('cctv-port-badge');
       if (cctvMediaPort && cctvVideo) {
         const videoMode = easyMode ? 'EASY' : 'HARD';
-        const videoLabel = easyMode ? 'かんたん' : '難しい';
+        const videoLabel = easyMode ? 'かんたん' : 'ふつう';
         const videoName = `CCTV-${videoMode}-09-11`;
         const videoSource = easyMode
           ? cctvMediaPort.dataset.videoEasy
